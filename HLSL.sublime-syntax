@@ -20,7 +20,7 @@ scope: source.hlsl
 variables:
   valid_variable: '[A-Za-z_][A-Za-z_0-9]*'
   valid_numeric_attribute_param: (?:([1-9]\d*)|(?:{{valid_variable}}))
-  reusable_value_types: (?:bool|double|float|half|int|min10float|min16float|min12int|min16int|min16uint|uint)
+  reusable_value_types: (?:bool|double|float|half|int|min10float|min16float|min12int|min16int|min16uint|uint|real)
   scalar_types: \b(?:{{reusable_value_types}}|dword|void)\b
   vector_types: \b(?:{{reusable_value_types}}(?:[1-4]))\b
   matrix_types: \b(?:{{reusable_value_types}}(?:[1-4])(?:x)(?:[1-4])|(?:matrix))\b
