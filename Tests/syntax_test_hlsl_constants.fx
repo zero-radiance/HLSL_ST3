@@ -3,7 +3,6 @@
 
 // Numerics
 
-{
   0
 //^ constant.numeric.hlsl
   0f
@@ -32,16 +31,17 @@
 //^^^^^^^ constant.numeric.hlsl
   1.5E-05
 //^^^^^^^ constant.numeric.hlsl
+  1.5e5
+//^^^^^ constant.numeric.hlsl
+  1e-5
+//^^^^ constant.numeric.hlsl
   .
 //^ -constant.numeric.hlsl
-}
 
 
 // Language
 
-{
   true
 //^^^^ constant.language.hlsl
   false
 //^^^^^ constant.language.hlsl
-}

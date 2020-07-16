@@ -1,12 +1,26 @@
 // SYNTAX TEST "HLSL.sublime-syntax"
 
 
-{
+// Comments
+
   // Comment!
 //^^^^^^^^^^^ comment.line.double-slash.hlsl
 
   // "Comment!"
 //^^^^^^^^^^^^^ comment.line.double-slash.hlsl
+
+  /* Comment! */
+//^^^^^^^^^^^^^^ comment.block.hlsl
+
+  /* Comment!
+//^^^^^^^^^^^ comment.block.hlsl
+  More Comment!
+//^^^^^^^^^^^^^ comment.block.hlsl
+  Another line of comment! */
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.block.hlsl
+
+
+// Includes
 
   #include "file.fxh"
 //^^^^^^^^^^^^^^^^^^^ meta.preprocessor.include.hlsl
@@ -23,6 +37,9 @@
 //          ^^^^^^^^ string.quoted.other.lt-gt.include.hlsl
 //                  ^ punctuation.definition.string.end.hlsl
 
+
+// Cbuffer
+
   cbuffer BufferName : register(b0)
 //^^^^^^^ storage.type.buffer.hlsl
 //       ^^^^^^^^^^^^^^^^^^^^^^^^^^ -storage.type.buffer.hlsl
@@ -35,6 +52,9 @@
     float4 Float4Var;
 //  ^^^^^^ storage.type.vector.hlsl
   }
+
+
+// Swizzling
 
   float3 var1;
   float4 var2 = var1.xrgz;
@@ -53,7 +73,34 @@
 //                         ^^^^ - variable.other.dot-access.hlsl
   float4 var7 = var1.xxyz.g.bb;
 //                  ^^^^^^^^^^ variable.other.dot-access.hlsl
-}
+
+
+// Macros
+
+  #define NAMESPACE_START(name) namespace name {
+//        ^^^^^^^^^^^^^^^ entity.name.function.hlsl
+//^^^^^^^^ -entity.name.function.hlsl
+//                       ^^^^^^^^^^^^^^^^^^^^^^^ -entity.name.function.hlsl
+//^^^^^^^^^^^^^^^^^^^^^^^^ -meta.function.parameters.hlsl
+//                             ^^^^^^^^^^^^^^^^^ -meta.function.parameters.hlsl
+//                        ^^^^^ meta.function.parameters.hlsl
+//                             ^^^^^^^^^^^^^^^^^ meta.function.hlsl
+
+//^ -meta.function.hlsl
+
+  #define NAMESPACE_END }
+//^^^^^^^ keyword.control.preprocessor.hlsl
+//       ^^^^^^^^^^^^^^ -keyword.control.preprocessor.hlsl
+//        ^^^^^^^^^^^^^ constant.other.hlsl
+//^^^^^^^^ -constant.other.hlsl
+//                     ^^ -constant.other.hlsl
+//^^^^^^^^^^^^^^^^^^^^^^^ meta.preprocessor.hlsl
+
+//^ -meta.preprocessor.hlsl
+
+
+// Everything below here should be removed at some point
+// I believe it is (or should be) redundant with tests in other files
 
 typedef struct
 //      ^ storage.type.struct.hlsl
